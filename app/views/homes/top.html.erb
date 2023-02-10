@@ -1,2 +1,19 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <h1 class="text-center">WELCOME !!</h1>
+      <p><strong>自分用メモ</strong>へようこそ！！</p>
+      <p>このサイトは自分が学んだことをメモしておき、思い出したい時に</p>
+      <p>メモを取り出せるといった機能を備えております。</p>
+      <p>また、他の人が投稿したメモも閲覧可能です。</p>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to 'ログインする', new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3" %>
+        </div>
+        <div class="row">
+          <%= link_to '会員登録する', new_user_registration_path, class: "btn btn-success btn-sm btn-block mb-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Memo</title>
+    <title>自分用メモ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -35,30 +35,52 @@
             <%else%>
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <%= link_to "投稿", new_user_session_path, class: "nav-link text-light border-right border-secondary"%><!--後程パスを記述-->
+                  <%= link_to "投稿", new_user_session_path, class: "nav-link text-light"%><!--後程パスを記述-->
                 </li>
+                <li class="nav-link text-secondary px-0">|</li>
                 <li class="nav-item">
                   <%= link_to "投稿一覧", new_user_registration_path, class: "nav-link text-light"%><!--後程パスを記述-->
                 </li>
               </ul>
-              <ul class="navbar-nav"><!--後程link_toに書き換え-->
-                <li class="nav-item">
-                  <a class="nav-link text-light border-right border-secondary" href="#">マイページ</a>
-                </li>
-                <li>
-                  <a class="nav-link text-light border-right border-secondary" href="#">投稿リスト</a>
-                </li>
-                <li>
-                  <a class="nav-link text-light" href="#">ログアウト</a>
-                </li>
+              <!--ドロップダウン-->
+              <ul class="navbar-nav dropdown"><!--後程link_toに書き換え-->
+                <a class="text-light dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= @c_user.name %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">マイページ</a>
+                  <a class="dropdown-item" href="#">自分の投稿</a>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </div>
               </ul>
             <%end%>
           </div>
         </div>
       </nav>
     </header>
-    <main class="bg-light bg-gradient">
+    <main class="bg-light bg-gradient h-100">
     <%= yield %>
     </main>
+    <footer class="bg-dark text-white pt-5 pb-4 fixed-bottom">
+      <div class="container">
+        <div class="row no-gutters">
+          <!--ここから注意関連-->
+          <div class="col-md-8">
+            <!--後程リンク追加-->
+            <h6 class="pb-3">自分用メモについて</h6>
+            <nav class="navbar-expand-lg pb-5">
+              <ul class="navbar-nav">
+                <li class="navbar-item">お問い合わせ</li>
+                <li class="text-secondary px-2">|</li>
+                <li class="navbar-item">注意事項</li>
+              </ul>
+            </nav>
+          </div>
+          <!--ここまで注意関連-->
+          <div class="col-md-4"><!--なんかいれたい--></div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
